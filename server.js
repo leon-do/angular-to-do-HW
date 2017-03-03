@@ -24,9 +24,15 @@ app.get('/api', function (req, res){
 
 
 
-//recieve post from client side and send updated data to mongo.js
-app.post('/userClicked', function(req,res){
+//recieve post from client side (to move from incomplete to complete) and send updated data to mongo.js
+app.post('/updateDB', function(req,res){
     mongoJS.mongoUpdate(req.body)
+})
+
+
+//recieve post from client side (to add note) and send updated data to mongo.js
+app.post('/createDb', function (req, res){
+    mongoJS.mongoCreate(req.body)
 })
 
 

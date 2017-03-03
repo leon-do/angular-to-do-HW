@@ -39,11 +39,24 @@ function getAPI($http){
     })
 
 
-    //when user clicks on incomplete...
+    //when user clicks on incomplete...post to server.js
     vm.updateDB = function(id, complete){
-        $http.post('/userClicked',{id:id, complete:complete}).success(function(data, status){
+        $http.post('/updateDB',{id:id, complete:complete}).success(function(data, status){
             console.log(status)
         })
+    }
+
+
+    //when user clicks on submit
+    vm.createDb = function(userNote){
+        // check if empty
+        if (userNote !== undefined && userNote !== null && Object.keys(userNote).length !== 0){
+            //if not empty, then post
+            console.log(userNote)
+            $http.post('/createDb',{userNote: userNote}).success(function(data, status){
+                console.log(userNote)
+            }) 
+        }
     }
 
 
