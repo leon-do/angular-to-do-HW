@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <!-- Angular -->
+    <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js'></script> 
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.4.2/angular-ui-router.min.js'></script>
+
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
+
+    <!-- Leon -->
+    <script src='angular.js'></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+</head>
+<body ng-app='myApp'>
+
+    <div class='container' ng-controller='myCtrl as myCtrl'>
+
+        <div class='card deep-purple darken-1'>
+            <div class='card-content white-text'>
+              <span class="card-title">Create</span>
+            </div>
+        </div>
+
+        <div class='card deep-purple darken-2'>
+            <div class='card-content white-text'>
+                <span class="card-title">Incomplete</span>
+                <a  class="waves-effect waves-light btn"
+                    ng-repeat="i in myCtrl.incomplete"
+                    ng-click='myCtrl.updateDB(i.id, i.complete)'
+                    data = '{{i.id}}'>
+                    {{i.phrase}}
+                </a>
+            </div>
+        </div>
+
+        <div class='card deep-purple darken-3'>
+            <div class='card-content white-text'>
+                <span class="card-title">Complete</span>
+                    <a  class="btn disabled"
+                    ng-repeat="i in myCtrl.complete"
+                    ng-click='myCtrl.updateDB(i.id, i.complete)'
+                    data = "{{i.id}}">
+                    {{i.phrase}}
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
