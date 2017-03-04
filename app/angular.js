@@ -1,9 +1,9 @@
 angular
     .module('myApp', [])
-    .controller('myCtrl', getAPI)
+    .controller('myCtrl', AngularCtrl)
 
 
-function getAPI($http){
+function AngularCtrl($http){
     var vm = this;
 
     //api call
@@ -42,7 +42,6 @@ function getAPI($http){
     //when user clicks on incomplete...post to server.js
     vm.updateDB = function(id, complete){
         $http.post('/updateDB',{id:id, complete:complete}).success(function(data, status){
-            console.log(status)
         })
     }
 
