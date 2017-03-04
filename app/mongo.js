@@ -1,7 +1,8 @@
 var mongoose = require('mongoose')
 var serverJS = require('../server.js')
 
-mongoose.connect('mongodb://localhost/testdb');
+//https://www.youtube.com/watch?v=ZIu3joJRLzM
+mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://localhost/testdb');
 
 //make model
 var angular2Do = mongoose.model("angular2DoCollection", {phrase:String, complete:Boolean})
