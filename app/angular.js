@@ -3,8 +3,9 @@ angular
     .controller('myCtrl', AngularCtrl)
 
 
-function AngularCtrl($http){
+function AngularCtrl($http, $window){
     var vm = this;
+
 
     //api call
     $http.get("/api").then(function(response){
@@ -38,22 +39,23 @@ function AngularCtrl($http){
         vm.incomplete = incompleteArray
     })
 
-
     //when user clicks on incomplete...post to server.js
     vm.updateDB = function(id, complete){
+        $window.location.reload();
         $http.post('/updateDB',{id:id, complete:complete}).success(function(data, status){
+            $window.location.reload();
         })
     }
 
 
     //when user clicks on submit
     vm.createDb = function(userNote){
+        $window.location.reload();
         // check if empty
         if (userNote !== undefined && userNote !== null && Object.keys(userNote).length !== 0){
             //if not empty, then post
             console.log(userNote)
             $http.post('/createDb',{userNote: userNote}).success(function(data, status){
-                console.log(userNote)
             }) 
         }
     }
